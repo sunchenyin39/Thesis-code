@@ -1,6 +1,6 @@
-I0 0 1 pwl(0 0 100p 0 200p 600u 300p 0)
-I1 0 2 pwl(0 0 1700p 0 1800p 600u 1900p 0)
-I2 0 3 pwl(0 0 500p 0 600p 600u 700p 0 900p 0 1000p 600u 1100p 0 2100p 0 2200p 600u 2300p 0 2500p 0 2600p 600u 2700p 0)
+I0 0 1 pwl(0 0 75p 600u 150p 0)
+I1 0 2 pwl(0 0 600p 0 675p 600u 750p 0)
+I2 0 3 pwl(0 0 150p 0 225p 600u 300p 0 375p 600u 450p 0 750p 0 825p 600u 900p 0 975p 600u 1050p 0)
 X0 1 3 LSmitll_DCSFQ
 X1 2 4 LSmitll_DCSFQ
 X2 3 5 LSmitll_DCSFQ
@@ -239,7 +239,7 @@ R1 6 13 2.743961767
 R2 3 14 3.048846408
 .ends LSmitll_DCSFQ
 
-.tran 0.25p 2400p 0 0.25p 
+.tran 0.25p 1200p 0 0.25p 
 .print NODEV 3
 .print NODEV 4
 .print NODEV 5

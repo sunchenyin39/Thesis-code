@@ -96,28 +96,7 @@ RD1 13 q0 RD
 RD2 10 q1 RD
 .ends LSMITLL_SPLITT
 
-.subckt LSmitll_buff a  q 
-B1  3 7  jjmit area=2.5
-B2  4 9  jjmit area=2.5
-B3 2 11 jjmit area=2.5
-IB1 0 5 pwl(0 0 5p 325u)
-IB2 0 2 pwl(0 0 5p 175u)
-L1 a 3 2p
-L2 3 6 2p
-L3 6 4 2p
-L4 4 2 3.8p
-L5 2 q 2p
-LB1 5 6 0.2p
-LP1 7 0 0.2p
-LP2 9 0 0.2p
-LP3 11 0 0.2p
-LRB1 3 8 1.55E-12
-LRB2 4 10 1.55E-12
-LRB3 12 0 1.55E-12
-RB1 8 0 2.744
-RB2 10 0 2.744
-RB3 2 12 2.744
-.ends LSmitll_buff
+
 
 .model jjmit jj(rtype=1, vg=2.8mV, cap=0.07pF, r0=160, rn=16, icrit=0.1mA)
 .tran 0.25p 1200p 0 0.25p 

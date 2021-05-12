@@ -1,6 +1,147 @@
-I0 0 1 pulse(0 600u 10p 100p 100p 1p 200p)
-X0 1 2 LSmitll_DCSFQ
-X1 2 3 LSmitll_SFQDC
+I0 0 1 pwl(0 0 100p 0 200p 600u 300p 0)
+I1 0 2 pwl(0 0 500p 0 600p 600u 700p 0 900p 0 1000p 600u 1100p 0)
+X0 1 3 LSmitll_DCSFQ
+X1 2 4 LSmitll_DCSFQ
+X2 3 4 5 LSMITLL_DFFT
+
+
+.model jjmit jj(rtype=1, vg=2.8mV, cap=0.07pF, r0=160, rn=16, icrit=0.1mA)
+.subckt LSMITLL_DFFT a clk q
+.param Phi0=2.067833848E-15
+.param B0=1
+.param Ic0=0.0001
+.param IcRs=100u*6.859904418
+.param B0Rs=IcRs/Ic0*B0
+.param Rsheet=2 
+.param Lsheet=1.13e-12 
+.param LP=0.2p
+.param IC=2.5
+.param ICreceive=2.0
+.param ICtrans=2.5
+.param Lptl=2p
+.param LB=2p
+.param BiasCoef=0.7
+.param RD=1.36
+.param B1=ICreceive
+.param B2=IC
+.param B3=IC/1.4
+.param B4=IC
+.param B5=IC
+.param B6=ICreceive
+.param B7=IC
+.param B8=IC/1.4
+.param B9=IC
+.param B10=ICtrans
+.param IB1=BiasCoef*(B1*Ic0+B2*Ic0)
+.param IB2=IC*Ic0
+.param IB3=BiasCoef*(B6*Ic0+B7*Ic0)
+.param IB4=BiasCoef*(B9*Ic0+B10*Ic0)
+.param L1=Lptl
+.param L2=(Phi0/(2*B1*Ic0))/2
+.param L3=(Phi0/(2*B1*Ic0))/2
+.param L4=Phi0/(2*B2*Ic0)
+.param L5=Phi0/(B4*Ic0)
+.param L6=Lptl
+.param L7=(Phi0/(2*B6*Ic0))/2
+.param L8=(Phi0/(2*B6*Ic0))/2
+.param L9=Phi0/(2*B7*Ic0)
+.param L10=Phi0/(2*B5*Ic0)
+.param L11=(Phi0/(2*B9*Ic0))/2
+.param L12=(Phi0/(2*B9*Ic0))/2
+.param L13=Lptl
+.param RB1=B0Rs/B1   
+.param RB2=B0Rs/B2
+.param RB3=B0Rs/B3
+.param RB4=B0Rs/B4
+.param RB5=B0Rs/B5
+.param RB6=B0Rs/B6
+.param RB7=B0Rs/B7
+.param RB8=B0Rs/B8
+.param RB9=B0Rs/B9
+.param RB10=B0Rs/B10
+.param LRB1=(RB1/Rsheet)*Lsheet+LP
+.param LRB2=(RB2/Rsheet)*Lsheet+LP
+.param LRB3=(RB3/Rsheet)*Lsheet+LP
+.param LRB4=(RB4/Rsheet)*Lsheet+LP
+.param LRB5=(RB5/Rsheet)*Lsheet+LP 
+.param LRB6=(RB6/Rsheet)*Lsheet+LP
+.param LRB7=(RB7/Rsheet)*Lsheet+LP 
+.param LRB8=(RB8/Rsheet)*Lsheet+LP
+.param LRB9=(RB9/Rsheet)*Lsheet+LP
+.param LRB10=(RB10/Rsheet)*Lsheet+LP
+.param LP1=LP
+.param LP2=LP
+.param LP4=LP
+.param LP5=LP
+.param LP6=LP
+.param LP7=LP
+.param LP9=LP
+.param LP10=LP
+.param LB1=LB
+.param LB2=LB
+.param LB3=LB
+.param LB4=LB
+IB1 0 5 pwl(0 0 5p IB1)
+IB2 0 11 pwl(0 0 5p IB2)
+IB3 0 18 pwl(0 0 5p IB3)
+IB4 0 25 pwl(0 0 5p IB4)
+B1 2 3 jjmit area=B1
+B2 6 7 jjmit area=B2
+B3 8 9 jjmit area=B3
+B4 9 10 jjmit area=B4
+B5 12 13 jjmit area=B5
+B6 15 16 jjmit area=B6
+B7 19 20 jjmit area=B7
+B8 21 12 jjmit area=B8
+B9 22 23 jjmit area=B9
+B10 26 27 jjmit area=B10
+L1 a 2 L1
+L2 2 4 L2
+L3 4 6 L3
+L4 6 8 L4
+L5 9 12 L5
+L6 clk 15 L6
+L7 15 17 L7
+L8 17 19 L8
+L9 19 21 L9
+L10 12 22 L10
+L11 22 24 L11
+L12 24 26 L12
+L13 26 28 L13
+LP1 3 0 LP1
+LP2 7 0 LP2
+LP4 10 0 LP4
+LP5 13 0 LP5
+LP6 16 0 LP6
+LP7 20 0 LP7
+LP9 23 0 LP9
+LP10 27 0 LP10
+LB1 4 5 LB1
+LB2 9 11 LB2
+LB3 17 18 LB3
+LB4 24 25 LB4
+RB1 2 102 RB1
+RB2 6 106 RB2
+RB3 8 108 RB3
+RB4 9 109 RB4
+RB5 12 112 RB5
+RB6 15 115 RB6
+RB7 19 119 RB7
+RB8 21 121 RB8
+RB9 22 122 RB9
+RB10 26 126 RB10
+LRB1 102 0 LRB1
+LRB2 106 0 LRB2
+LRB3 108 9 LRB3
+LRB4 109 0 LRB4
+LRB5 112 0 LRB5
+LRB6 115 0 LRB6
+LRB7 119 0 LRB7
+LRB8 121 12 LRB8
+LRB9 122 0 LRB9
+LRB10 126 0 LRB10
+RD 28 q RD
+.ends LSMITLL_DFFT
 
 .subckt LSmitll_DCSFQ a q
 B0 3 4 jjmit area=2.25
@@ -26,111 +167,8 @@ R1 6 13 2.743961767
 R2 3 14 3.048846408
 .ends LSmitll_DCSFQ
 
-.subckt LSmitll_SFQDC a q
-.param B0=1
-.param Ic0=0.0001
-.param IcRs=100u*6.859904418
-.param B0Rs=IcRs/Ic0*B0
-.param Rsheet=2 
-.param Lsheet=1.13e-12 
-.param B1=3.25
-.param B2=2.00
-.param B3=1.50
-.param B4=3.00
-.param B5=1.75
-.param B6=1.50
-.param B7=1.50
-.param B8=2.00
-.param L1=1.522p
-.param L3=0.827p
-.param L4=1.12884p
-.param L5=1.11098p
-.param L6=5.940p
-.param L7=3.216p
-.param L10=0.215p
-.param L13=3.699p
-.param L17=1.510p
-.param L18=2.010p
-.param L19=0.954p
-.param L4b=0.178p
-.param LB1=(RB1/Rsheet)*Lsheet
-.param LB2=(RB2/Rsheet)*Lsheet
-.param LB3=(RB3/Rsheet)*Lsheet
-.param LB4=(RB4/Rsheet)*Lsheet
-.param LB5=(RB5/Rsheet)*Lsheet
-.param LB6=(RB6/Rsheet)*Lsheet
-.param LB7=(RB7/Rsheet)*Lsheet
-.param LB8=(RB8/Rsheet)*Lsheet
-.param LP1=0.140p
-.param LP4=0.524p
-.param LP5=0.516p
-.param LP7=0.086p
-.param LP8=0.226p
-.param LR1=0.91p
-.param R1=0.375
-.param RB1=B0Rs/B1
-.param RB2=B0Rs/B2
-.param RB3=B0Rs/B3
-.param RB4=B0Rs/B4
-.param RB5=B0Rs/B5
-.param RB6=B0Rs/B6
-.param RB7=B0Rs/B7
-.param RB8=B0Rs/B8
-.param IB1=280u
-.param IB2=150u
-.param IB3=220u
-.param IB4=80u
-B1 8 20 jjmit area=B1
-B2 12 13 jjmit area=B2
-B3 3 4 jjmit area=B3
-B4 13 29 jjmit area=B4
-B5 5 16 jjmit area=B5
-B6 6 7 jjmit area=B6
-B7 10 22 jjmit area=B7
-B8 11 24 jjmit area=B8
-IB1 0 8 pwl(0 0 5p IB1)
-IB2 0 4 pwl(0 0 5p IB2)
-IB3 0 7 pwl(0 0 5p IB3)
-IB4 0 18 pwl(0 0 5p IB4)
-L1 a 8 L1
-L3 8 17 L3
-L4 3 17 L4
-L5 17 12 L5
-L6 5 9 L6
-L7 9 13 L7
-L10 9 6 L10
-L13 10 18 L13
-L17 11 q L17
-L18 18 11 L18
-L19 7 10 L19
-L4b 4 5 L4b
-LB1 8 21 LB1
-LB2 12 27 LB2
-LB3 3 14 LB3
-LB4 13 28 LB4
-LB5 5 15 LB5
-LB6 6 19 LB6
-LB7 10 23 LB7
-LB8 11 25 LB8
-LP1 20 0 LP1
-LP4 29 0 LP4
-LP5 16 0 LP5
-LP7 22 0 LP7
-LP8 24 0 LP8
-LR1 9 26 LR1
-R1 26 0 R1
-RB1 21 0 RB1
-RB2 27 13 RB2
-RB3 14 4 RB3
-RB4 28 0 RB4
-RB5 15 0 RB5
-RB6 19 7 RB6
-RB7 23 0 RB7
-RB8 25 0 RB8
-.ends LSmitll_SFQDC
-.model jjmit jj(rtype=1, vg=2.8mV, cap=0.07pF, r0=160, rn=16, icrit=0.1mA)
-
 .tran 0.25p 1200p 0 0.25p 
-.print DEVI I0
 .print NODEV 3
-.end
+.print NODEV 4
+.print NODEV 5
+.ends

@@ -1,6 +1,6 @@
 I0 0 1 pulse(0 600u 10p 100p 100p 1p 200p)
 X0 1 2 LSmitll_DCSFQ
-X1 2 3 LSmitll_buff
+X1 2 3 LSmitll_bufft
 
 .subckt LSmitll_DCSFQ a q
 B0 3 4 jjmit area=2.25

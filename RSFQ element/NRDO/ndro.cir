@@ -1,10 +1,10 @@
 I0 0 1 pwl(0 0 100p 0 200p 600u 300p 0)
 I1 0 2 pwl(0 0 1700p 0 1800p 600u 1900p 0)
 I2 0 3 pwl(0 0 500p 0 600p 600u 700p 0 900p 0 1000p 600u 1100p 0 2100p 0 2200p 600u 2300p 0 2500p 0 2600p 600u 2700p 0)
-X0 1 3 LSmitll_DCSFQ
-X1 2 4 LSmitll_DCSFQ
-X2 3 5 LSmitll_DCSFQ
-X3 3 4 5 6 LSmitll_NDROT
+X0 1 4 LSmitll_DCSFQ
+X1 2 5 LSmitll_DCSFQ
+X2 3 6 LSmitll_DCSFQ
+X3 4 5 6 7 LSmitll_NDROT
 
 .model jjmit jj(rtype=1, vg=2.8mV, cap=0.07pF, r0=160, rn=16, icrit=0.1mA)
 .subckt LSmitll_NDROT a b clk q
@@ -239,9 +239,9 @@ R1 6 13 2.743961767
 R2 3 14 3.048846408
 .ends LSmitll_DCSFQ
 
-.tran 0.6p 2800p 0 0.6p 
-.print NODEV 3
+.tran 0.5p 2800p 0 0.5p 
 .print NODEV 4
 .print NODEV 5
 .print NODEV 6
+.print NODEV 7
 .ends
